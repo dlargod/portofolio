@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">David Largo</a>
+
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#">Education</a>
+            <a href="#">Skills</a>
+            <a href="#">Experience</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <!--Main Section-->
+    <section class="home">
+        <div class="home-img">
+            <img src="mainImg.jpg">
+        </div>
+        <div class="home-content">
+            <h1>Hey there, it's <span>David</span></h1>
+            <h3 class="typing-text">I'm a <span id="dynamic-text"></span></h3>
+            <p>I am a fresh graduate in Informatics with a deep interest in product development and coding.
+                I have experience working with programming languages such as Python and Java and have contributed to several web-based application development projects. 
+                I am driven to create innovative solutions that enhance user experiences and support overall product success.</p>
+            <div class="social-icons">
+                <a href="https://github.com/dlargod" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/davidlargo" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.instagram.com/d_largolbntoruan/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <a href="mailto:dlargo02032002@gmail.com" class="btn">Contact Me</a>
+        </div>
+    </section>
+
+
+    <!--Section 1-->
+    <section class="about" id="about">
+        <div class="content">
+            <div class="title"><span>About me</span></div>
+            <div class="about-details">
+                <div class="left">
+                    <img src="image1.jpeg" alt="">
+                </div>
+                <div class="topic">Programming is My Passion</div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quidem voluptas ut eligendi, ducimus delectus commodi deserunt ratione iure blanditiis voluptatem obcaecati quo eaque nisi veritatis necessitatibus ipsum ullam quia.</p>
+                <div class="btn">
+                    <button>Download CV</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<script>
+    const words = ["Developer", "UI/UX Designer", "Machine Learning Engineer"];
+    let index = 0;
+
+    function changeText() {
+        const dynamicText = document.getElementById("dynamic-text");
+        dynamicText.textContent = ""; // Kosongkan teks sebelumnya
+        let currentWord = words[index];
+        let charIndex = 0;
+
+        const typingInterval = setInterval(() => {
+            if (charIndex < currentWord.length) {
+                dynamicText.textContent += currentWord.charAt(charIndex); // Menambahkan karakter satu per satu
+                charIndex++;
+            } else {
+                clearInterval(typingInterval);
+                setTimeout(() => {
+                    index = (index + 1) % words.length; // Pergi ke kata berikutnya
+                    dynamicText.textContent = ""; // Kosongkan teks sebelum menampilkan kata berikutnya
+                    setTimeout(() => {
+                        changeText(); // Memanggil fungsi untuk kata selanjutnya
+                    }, 500); // Jeda sebelum memulai mengetik
+                }, 1000); // Jeda sebelum mengganti kata
+            }
+        }, 200); // Kecepatan mengetik
+    }
+
+    // Memulai animasi saat halaman dimuat
+    window.onload = () => {
+        changeText();
+    };
+</script>
+</body>
+</html>
